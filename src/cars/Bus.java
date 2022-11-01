@@ -4,8 +4,19 @@ import cars.Car;
 
 public class Bus extends Car implements Competing {
 
-    public Bus(String brand, String model, double engineVolume) {
+    private Capacity capacity;
+
+    public Bus(String brand, String model, double engineVolume, Capacity capacity) {
         super(brand, model, engineVolume);
+        this.capacity = capacity;
+    }
+
+    public Capacity getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Capacity capacity) {
+        this.capacity = capacity;
     }
 
     @Override
@@ -35,5 +46,13 @@ public class Bus extends Car implements Competing {
 
     public String toString() {
         return "Информация по автобусу: Бренд: " + getBrand() + ". Модель: " + getModel() + ".Объем двигателя: " + getEngineVolume() + " л.";
+    }
+
+    public void printType() {
+        if (capacity == null){
+            System.out.println("Данных по грузовому авто недостаточно.");
+        } else {
+            System.out.println("Вместимость автобуса: от " + capacity.getFrom() + " до " + capacity.getTo() + " человек.");
+        }
     }
 }

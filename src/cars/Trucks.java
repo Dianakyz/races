@@ -5,8 +5,19 @@ import cars.Competing;
 
 public class Trucks extends Car implements Competing {
 
-    public Trucks(String brand, String model, double engineVolume) {
+    private Weight weight;
+
+    public Trucks(String brand, String model, double engineVolume, Weight weight) {
         super(brand, model, engineVolume);
+        this.weight = weight;
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Weight weight) {
+        this.weight = weight;
     }
 
     @Override
@@ -37,5 +48,15 @@ public class Trucks extends Car implements Competing {
 
     public String toString() {
         return "Информация по грузовому автомобилю: Бренд: " + getBrand() + ". Модель: " + getModel() + ".Объем двигателя: " + getEngineVolume() + " л.";
+    }
+
+    public void printType() {
+        if (weight == null){
+            System.out.println("Данных по грузовому авто недостаточно.");
+        } else {
+            String from = weight.getFrom() == null ? "" : "от " + weight.getFrom() + " ";
+            String to = weight.getTo() == null ? "" : "до " + weight.getTo();
+            System.out.println("Грузоподъемность авто: " + from + to + " тонн.");
+        }
     }
 }
