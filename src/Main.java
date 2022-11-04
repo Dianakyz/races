@@ -83,6 +83,10 @@ public class Main {
         scania.printType();
         kamaz.printType();
 
+        lotos.service();
+
+
+
 
 
 

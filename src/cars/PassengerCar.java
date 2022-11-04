@@ -40,6 +40,11 @@ public class PassengerCar extends Car implements Competing {
     }
 
     @Override
+    public boolean service() {
+        return Math.random() > 0.5;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Информация по заправке легковых автомобилей: можно заправлять бензином, дизелем на заправке или заряжать на специальных электропарковках, если это электрокар.");
     }

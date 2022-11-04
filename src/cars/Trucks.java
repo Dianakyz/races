@@ -59,4 +59,9 @@ public class Trucks extends Car implements Competing {
             System.out.println("Грузоподъемность авто: " + from + to + " тонн.");
         }
     }
+
+    @Override
+    public boolean service() {
+        return Math.random() > 0.75;
+    }
 }
