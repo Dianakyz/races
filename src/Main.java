@@ -69,13 +69,13 @@ public class Main {
         scania.bestTimeRound();
         scania.maxSpeed();
 
-        DriverB alex = new DriverB("Alex", "Yes", 5);
+        DriverB alex = new DriverB("Alex", "Yes", 5, "B");
         alex.driveCar(kia);
 
-        DriverC max = new DriverC("Max", "Yes", 10);
+        DriverC max = new DriverC("Max", "Yes", 10, "C");
         max.driveCar(kamaz);
 
-        DriverD dan = new DriverD("Dan", "Yes", 8);
+        DriverD dan = new DriverD("Dan", "Yes", 8, "D");
         dan.driveCar(scania);
 
         kia.printType();
@@ -83,12 +83,25 @@ public class Main {
         scania.printType();
         kamaz.printType();
 
-        lotos.service();
+        service(kia, lada, bmw, mazda,
+                kamaz, hyundai, gaz, howo,
+                daewoo, baw, lotos, scania);
+    }
+
+    private static void service(Car... cars) {
+        for (Car car : cars) {
+                serviceCar(car);
+            }
+        }
 
 
-
-
-
-
+    private static void  serviceCar (Car car) {
+        try {
+            if (!car.service()) {
+                throw new RuntimeException("Автомобиль " + car.getBrand() + " " + car.getModel() + " не прошел диагностику!");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
