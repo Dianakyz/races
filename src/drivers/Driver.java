@@ -8,11 +8,13 @@ public abstract class Driver <T extends Car> {
     private final String fullName;
     private final String license;
     private int experience;
+    private T category;
 
     public Driver(String fullName, String license, int experience) {
         this.fullName = ValidationUtils.validOrDefault(fullName, "информация не указана");
         this.license = ValidationUtils.validOrDefault(license, "информация не указана");
         setExperience(experience);
+        setCategory(category);
     }
 
     public abstract void driveCar(T car);
@@ -36,6 +38,17 @@ public abstract class Driver <T extends Car> {
         } else {
             this.experience = experience;
         }
+    }
+
+    public T getCategory(){
+        return category;
+    }
+
+    public void setCategory(T category){
+        if (category == null) {
+            throw new IllegalArgumentException("Необходимо указать категорию прав");
+        }
+        this.category = category;
     }
 
     public abstract void startMove();

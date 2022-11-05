@@ -36,4 +36,8 @@ public abstract class Car {
     public abstract void start();
 
     public abstract void finish();
+
+    public abstract void printType();
+
+    public abstract boolean service();
 }
