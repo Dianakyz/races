@@ -4,13 +4,13 @@ import cars.Trucks;
 
 public class DriverC extends Driver<Trucks> {
 
-    public DriverC(String fullName, String license, int experience) {
-        super(fullName, license, experience);
+    public DriverC(String fullName, String license, int experience, String category) {
+        super(fullName, license, experience, category);
     }
 
     @Override
     public void driveCar(Trucks car) {
-        System.out.println("Водитель " + getFullName() + " водит грузовую машину " + car.getBrand() + " " + car.getModel());
+        System.out.println("Водитель " + getFullName()  + ". Наличие прав: " + getLicense() + ". Категория прав: " + getCategory() +  ". Водит грузовую машину " + car.getBrand() + " " + car.getModel());
     }
 
     @Override
