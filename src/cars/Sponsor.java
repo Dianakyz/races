@@ -22,3 +22,5 @@ public class Sponsor {
         System.out.println("Спонсор " + name + " проспонсировал заезд на сумму " + amount + " рублей");
     }
 }
+
+//
