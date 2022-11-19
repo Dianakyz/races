@@ -3,6 +3,8 @@ package drivers;
 import cars.Car;
 import validationUtils.ValidationUtils;
 
+import java.util.Objects;
+
 public abstract class Driver <T extends Car> {
 
     private final String fullName;
@@ -57,4 +59,17 @@ public abstract class Driver <T extends Car> {
     public abstract void stopMove();
 
     public abstract void refuel();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver<?> driver = (Driver<?>) o;
+        return fullName.equals(driver.fullName) && license.equals(driver.license) && category.equals(driver.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, license, category);
+    }
 }
