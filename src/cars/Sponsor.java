@@ -1,5 +1,7 @@
 package cars;
 
+import java.util.Objects;
+
 public class Sponsor {
 
     private final String name;
@@ -21,6 +23,19 @@ public class Sponsor {
     public void toSponsorRace () {
         System.out.println("Спонсор " + name + " проспонсировал заезд на сумму " + amount + " рублей");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sponsor sponsor = (Sponsor) o;
+        return name.equals(sponsor.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }
 
-//
+

@@ -5,20 +5,18 @@ import drivers.DriverD;
 import validationUtils.ValidationUtils;
 
 import java.sql.Driver;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class Car {
 
     private final String brand;
     private final String model;
     private double engineVolume;
-    private final List<DriverB> driverBs = new ArrayList<>();
-    private final List<DriverC> driverCs = new ArrayList<>();
-    private final List<DriverD> driverDs = new ArrayList<>();
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
-    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final Set<DriverB> driverBs = new HashSet<>();
+    private final Set<DriverC> driverCs = new HashSet<>();
+    private final Set<DriverD> driverDs = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
     public Car(String brand, String model, double engineVolume) {
         this.brand = ValidationUtils.validOrDefault(brand, "информация не указана");
@@ -66,23 +64,23 @@ public abstract class Car {
         this.mechanics.addAll(Arrays.asList(mechanics));
     }
 
-    public List<DriverB> getDriverBs() {
+    public Set<DriverB> getDriverBs() {
         return driverBs;
     }
 
-    public List<DriverC> getDriverCs() {
+    public Set<DriverC> getDriverCs() {
         return driverCs;
     }
 
-    public List<DriverD> getDriverDs() {
+    public Set<DriverD> getDriverDs() {
         return driverDs;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 
@@ -95,4 +93,17 @@ public abstract class Car {
     public abstract boolean service();
 
     public abstract void repair();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Double.compare(car.engineVolume, engineVolume) == 0 && brand.equals(car.brand) && model.equals(car.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume);
+    }
 }
