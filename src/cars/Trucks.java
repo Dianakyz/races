@@ -64,4 +64,10 @@ public class Trucks extends Car implements Competing {
     public boolean service() {
         return Math.random() > 0.75;
     }
+
+    @Override
+    public void repair() {
+        System.out.println("Машина " + getBrand() + getModel() + " починена.");
+
+    }
 }

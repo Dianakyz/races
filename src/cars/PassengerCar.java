@@ -45,6 +45,11 @@ public class PassengerCar extends Car implements Competing {
     }
 
     @Override
+    public void repair() {
+        System.out.println("Машина " + getBrand() + getModel() + " починена.");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Информация по заправке легковых автомобилей: можно заправлять бензином, дизелем на заправке или заряжать на специальных электропарковках, если это электрокар.");
     }
